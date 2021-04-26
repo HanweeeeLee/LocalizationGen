@@ -1,0 +1,2 @@
+# LocalizationGen
+Localization Gen Application
