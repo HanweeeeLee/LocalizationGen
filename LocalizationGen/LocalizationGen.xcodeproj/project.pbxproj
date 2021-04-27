@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F16A75526379A8F005CF7B9 /* CommandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A75126379A8F005CF7B9 /* CommandModel.swift */; };
+		4F16A75626379A8F005CF7B9 /* CommandDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A75326379A8F005CF7B9 /* CommandDefine.swift */; };
+		4F16A75726379A8F005CF7B9 /* CommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A75426379A8F005CF7B9 /* CommonDefine.swift */; };
+		4F16A75B26379CA2005CF7B9 /* CommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A75A26379CA2005CF7B9 /* CommandParser.swift */; };
+		4F16A75F2637A56B005CF7B9 /* AppleLocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A75E2637A56B005CF7B9 /* AppleLocalizationManager.swift */; };
+		4F16A7632637A703005CF7B9 /* LocalizationFileMakerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A7622637A703005CF7B9 /* LocalizationFileMakerProtocol.swift */; };
+		4F16A7672637AA13005CF7B9 /* DefineClassProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A7662637AA13005CF7B9 /* DefineClassProtocol.swift */; };
 		781B7A992636E0D300AAB049 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781B7A982636E0D300AAB049 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +30,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F16A75126379A8F005CF7B9 /* CommandModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandModel.swift; sourceTree = "<group>"; };
+		4F16A75326379A8F005CF7B9 /* CommandDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDefine.swift; sourceTree = "<group>"; };
+		4F16A75426379A8F005CF7B9 /* CommonDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonDefine.swift; sourceTree = "<group>"; };
+		4F16A75A26379CA2005CF7B9 /* CommandParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParser.swift; sourceTree = "<group>"; };
+		4F16A75E2637A56B005CF7B9 /* AppleLocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLocalizationManager.swift; sourceTree = "<group>"; };
+		4F16A7622637A703005CF7B9 /* LocalizationFileMakerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationFileMakerProtocol.swift; sourceTree = "<group>"; };
+		4F16A7662637AA13005CF7B9 /* DefineClassProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineClassProtocol.swift; sourceTree = "<group>"; };
 		781B7A952636E0D300AAB049 /* LocalizationGen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LocalizationGen; sourceTree = BUILT_PRODUCTS_DIR; };
 		781B7A982636E0D300AAB049 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +52,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F16A75026379A8F005CF7B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F16A75126379A8F005CF7B9 /* CommandModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4F16A75226379A8F005CF7B9 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				4F16A75326379A8F005CF7B9 /* CommandDefine.swift */,
+				4F16A75426379A8F005CF7B9 /* CommonDefine.swift */,
+			);
+			path = Define;
+			sourceTree = "<group>";
+		};
+		4F16A75926379C6C005CF7B9 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				4F16A75A26379CA2005CF7B9 /* CommandParser.swift */,
+				4F16A75E2637A56B005CF7B9 /* AppleLocalizationManager.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		4F16A7612637A6EB005CF7B9 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				4F16A7622637A703005CF7B9 /* LocalizationFileMakerProtocol.swift */,
+				4F16A7662637AA13005CF7B9 /* DefineClassProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		781B7A8C2636E0D300AAB049 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +106,10 @@
 		781B7A972636E0D300AAB049 /* LocalizationGen */ = {
 			isa = PBXGroup;
 			children = (
+				4F16A7612637A6EB005CF7B9 /* Protocol */,
+				4F16A75226379A8F005CF7B9 /* Define */,
+				4F16A75026379A8F005CF7B9 /* Model */,
+				4F16A75926379C6C005CF7B9 /* Module */,
 				781B7A982636E0D300AAB049 /* main.swift */,
 			);
 			path = LocalizationGen;
@@ -120,6 +173,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				781B7A992636E0D300AAB049 /* main.swift in Sources */,
+				4F16A7632637A703005CF7B9 /* LocalizationFileMakerProtocol.swift in Sources */,
+				4F16A75F2637A56B005CF7B9 /* AppleLocalizationManager.swift in Sources */,
+				4F16A75B26379CA2005CF7B9 /* CommandParser.swift in Sources */,
+				4F16A7672637AA13005CF7B9 /* DefineClassProtocol.swift in Sources */,
+				4F16A75726379A8F005CF7B9 /* CommonDefine.swift in Sources */,
+				4F16A75626379A8F005CF7B9 /* CommandDefine.swift in Sources */,
+				4F16A75526379A8F005CF7B9 /* CommandModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,10 +304,11 @@
 		781B7A9D2636E0D300AAB049 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P4ZJYAK634;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -255,10 +316,11 @@
 		781B7A9E2636E0D300AAB049 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P4ZJYAK634;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
