@@ -52,7 +52,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "outputPath=&quot;myOutputPath&quot;"
+            argument = "outputPath=&quot;/Users/hanwelee/Downloads&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -64,7 +64,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "fileName=&quot;myLocalization.string&quot;"
+            argument = "fileName=&quot;myLocalization.strings&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

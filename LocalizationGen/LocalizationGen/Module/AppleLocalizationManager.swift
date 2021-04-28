@@ -113,8 +113,14 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
                 let value: String = cvsMatrix[j][columnIndex]
                 localizationFileString.append(makeLocalizationLine(key: key, value: value))
             }
+            print("key:\(model.localColumnKeys[i])")
             print("localizationFileString:\(localizationFileString)")
+            let data: Data = localizationFileString.data(using: .utf8)!
+//            try! data.write(to: URL(string: "\(self.model.outputPath)/\(self.model.fileName)")!)
+            self.fileManager.createFile(atPath: "\(self.model.outputPath)/\(self.model.fileName)", contents: data, attributes: nil)
         }
     }
+    
+    
     
 }
