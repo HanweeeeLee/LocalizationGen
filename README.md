@@ -17,7 +17,7 @@
  - 앱을 적당한곳에 넣고 XCode에 스크립트를 추가해주세요.
  
  ```
- [앱 경로] inputPath=[cvs파일 경로] outputPath=[Localization파일이 쓰여질 경로] fileName="myLocalization.string" localColumnKeys=[Localization 키워드] keyColumnKey=[cvs에 기입되어있는 Localization Key의 컬럼 키워드]
+ [앱 경로] inputPath=[cvs파일 경로] outputPath=[Localization파일이 쓰여질 경로] fileName=[파일 이름] localColumnKeys=[Localization 키워드] keyColumnKey=[cvs에 기입되어있는 Localization Key의 컬럼 키워드]
  ```
  
  #### ex)
