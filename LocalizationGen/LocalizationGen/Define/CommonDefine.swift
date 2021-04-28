@@ -10,7 +10,7 @@ import Cocoa
 
 class CommonDefine: NSObject {
     class Apple: DefineClassProtocol {
-        static var LOCALIZATION_FILE_EXTENSION: String = ".string"
+        static var LOCALIZATION_FILE_EXTENSION: String = ".strings"
         static var LOCALIZATION_DIRECTORY_EXTENSION: String = ".lproj"
     }
 

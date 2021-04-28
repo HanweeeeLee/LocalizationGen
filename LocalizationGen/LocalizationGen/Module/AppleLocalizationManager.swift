@@ -7,7 +7,6 @@
 
 import Cocoa
 
-
 class AppleLocalizationManager: LocalizationFileMakerProtocol {
     
     // MARK: property
@@ -102,6 +101,29 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
         return returnValue
     }
     
+    @discardableResult private func makeFileFromString(_ writedString: String, path: String) -> Bool {
+        guard let writeData: Data = writedString.data(using: .utf8) else { return false }
+        return self.fileManager.createFile(atPath: path, contents: writeData, attributes: nil)
+    }
+    
+    private func getOutputFullPath(localeKeyword: String) -> String {
+        var fullPath: String = ""
+        var outputPath: String = self.model.outputPath
+        if outputPath.last == "/" {
+            outputPath.removeLast()
+        }
+        var fileName: String = self.model.fileName
+        if fileName.contains(".") {
+            let range: Range<String.Index> = fileName.range(of: ".")!
+            let index: Int = fileName.distance(from: fileName.startIndex, to: range.lowerBound)
+            let removedRange = fileName.index(fileName.startIndex, offsetBy: index-1)..<fileName.endIndex
+            fileName.removeSubrange(removedRange)
+        }
+        fileName.append(CommonDefine.Apple.LOCALIZATION_FILE_EXTENSION)
+        fullPath = outputPath + "/\(localeKeyword)\(CommonDefine.Apple.LOCALIZATION_DIRECTORY_EXTENSION)/" + fileName
+        return fullPath
+    }
+    
     // MARK: internal function
     
     func makeLocalizationFile() {
@@ -113,11 +135,7 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
                 let value: String = cvsMatrix[j][columnIndex]
                 localizationFileString.append(makeLocalizationLine(key: key, value: value))
             }
-            print("key:\(model.localColumnKeys[i])")
-            print("localizationFileString:\(localizationFileString)")
-            let data: Data = localizationFileString.data(using: .utf8)!
-//            try! data.write(to: URL(string: "\(self.model.outputPath)/\(self.model.fileName)")!)
-            self.fileManager.createFile(atPath: "\(self.model.outputPath)/\(self.model.fileName)", contents: data, attributes: nil)
+            makeFileFromString(localizationFileString, path: getOutputFullPath(localeKeyword: model.localColumnKeys[i]))
         }
     }
     
