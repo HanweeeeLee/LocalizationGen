@@ -121,7 +121,16 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
         }
         fileName.append(CommonDefine.Apple.LOCALIZATION_FILE_EXTENSION)
         fullPath = outputPath + "/\(localeKeyword)\(CommonDefine.Apple.LOCALIZATION_DIRECTORY_EXTENSION)/" + fileName
+        autoCreateLocaleDirectory(dir: outputPath + "/\(localeKeyword)\(CommonDefine.Apple.LOCALIZATION_DIRECTORY_EXTENSION)") // todo 옵션으로 빼기
         return fullPath
+    }
+    
+    private func autoCreateLocaleDirectory(dir: String) {
+        var isDir: ObjCBool = true
+        if !self.fileManager.fileExists(atPath: dir, isDirectory: &isDir) {
+            let dirUrl: URL = URL(fileURLWithPath: dir)
+            try? self.fileManager.createDirectory(at: dirUrl, withIntermediateDirectories: false, attributes: nil)
+        }
     }
     
     // MARK: internal function
