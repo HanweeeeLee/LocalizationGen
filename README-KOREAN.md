@@ -43,7 +43,27 @@ ${SRCROOT}/LocalizationGen inputPath="/Users/master/Downloads/test.csv" outputPa
   - iOS, macOS, watchOS, tvOS  -> Apple
   - Android -> Android
   
-  
+## 구글 스프레드시트와 연동
+### 만약 구글 스프레드시트로 다국어를 정리하고 있다면 구글 스프레드시트에서 IDE로 바로 다국어 파일을 만들 수 있습니다!
+ex)  
+샘플 주소: https://docs.google.com/spreadsheets/d/1jujeVA4qZVKnL6Cv3-_Ik_LlIp7YnAJ3Q_vmHXcyknw/edit?usp=sharing
+샘플 쉘 스크립트
+```shell
+curl -L "https://docs.google.com/feeds/download/spreadsheets/Export?key=1jujeVA4qZVKnL6Cv3-_Ik_LlIp7YnAJ3Q_vmHXcyknw&exportFormat=csv&gid=775030050" -o "localization.csv"
+./LocalizationGen outputPath="../Projects/Resources/Localization" keyColumnKey="key" platform="Apple" fileName="Localizable.strings" localColumnKeys="ko&en" inputPath="./localization.csv"
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

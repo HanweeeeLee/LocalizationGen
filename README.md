@@ -43,7 +43,12 @@ The row 1 in the > .csv file is used to distinguish between localColumnKey, keyC
 - iOS, macOS, watchOS, tvOS -> Apple
 - Android -> Android
 
-
-
-
-
+## Interworking with Google Spreadsheets
+### If you're organizing multilingual files with Google spreadsheets, you can create multilingual files directly from Google spreadsheets to IDE!
+ex)
+Sample Sheets: https://docs.google.com/spreadsheets/d/1jujeVA4qZVKnL6Cv3-_Ik_LlIp7YnAJ3Q_vmHXcyknw/edit?usp=sharing
+Sample Shell Script
+```shell
+curl -L "https://docs.google.com/feeds/download/spreadsheets/Export?key=1jujeVA4qZVKnL6Cv3-_Ik_LlIp7YnAJ3Q_vmHXcyknw&exportFormat=csv&gid=775030050" -o "localization.csv"
+./LocalizationGen outputPath="../Projects/Resources/Localization" keyColumnKey="key" platform="Apple" fileName="Localizable.strings" localColumnKeys="ko&en" inputPath="./localization.csv"
+```
