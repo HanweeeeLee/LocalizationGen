@@ -7,7 +7,7 @@
 
 import Cocoa
 
-protocol LocalizationFileMakerProtocol: class {
+protocol LocalizationFileMakerProtocol: AnyObject {
     var model: CommandModel { get set }
     
     func makeLocalizationFile()

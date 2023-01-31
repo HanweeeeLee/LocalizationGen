@@ -31,6 +31,8 @@ class CommandParser {
                 switch keyValueArr[1] {
                 case Platform.apple.rawValue:
                     platform = .apple
+                case Platform.android.rawValue:
+                    platform = .android
                 default:
                     continue
                 }

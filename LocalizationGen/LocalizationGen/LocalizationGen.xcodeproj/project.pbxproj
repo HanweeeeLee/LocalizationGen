@@ -13,8 +13,8 @@
 		4F16A75B26379CA2005CF7B9 /* CommandParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A75A26379CA2005CF7B9 /* CommandParser.swift */; };
 		4F16A75F2637A56B005CF7B9 /* AppleLocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A75E2637A56B005CF7B9 /* AppleLocalizationManager.swift */; };
 		4F16A7632637A703005CF7B9 /* LocalizationFileMakerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A7622637A703005CF7B9 /* LocalizationFileMakerProtocol.swift */; };
-		4F16A7672637AA13005CF7B9 /* DefineClassProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16A7662637AA13005CF7B9 /* DefineClassProtocol.swift */; };
 		781B7A992636E0D300AAB049 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781B7A982636E0D300AAB049 /* main.swift */; };
+		F3B89359289A62A60037DA13 /* AndroidLocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B89358289A62A60037DA13 /* AndroidLocalizationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,9 +36,9 @@
 		4F16A75A26379CA2005CF7B9 /* CommandParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandParser.swift; sourceTree = "<group>"; };
 		4F16A75E2637A56B005CF7B9 /* AppleLocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLocalizationManager.swift; sourceTree = "<group>"; };
 		4F16A7622637A703005CF7B9 /* LocalizationFileMakerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationFileMakerProtocol.swift; sourceTree = "<group>"; };
-		4F16A7662637AA13005CF7B9 /* DefineClassProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineClassProtocol.swift; sourceTree = "<group>"; };
 		781B7A952636E0D300AAB049 /* LocalizationGen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LocalizationGen; sourceTree = BUILT_PRODUCTS_DIR; };
 		781B7A982636E0D300AAB049 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F3B89358289A62A60037DA13 /* AndroidLocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroidLocalizationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +74,7 @@
 			children = (
 				4F16A75A26379CA2005CF7B9 /* CommandParser.swift */,
 				4F16A75E2637A56B005CF7B9 /* AppleLocalizationManager.swift */,
+				F3B89358289A62A60037DA13 /* AndroidLocalizationManager.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -82,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				4F16A7622637A703005CF7B9 /* LocalizationFileMakerProtocol.swift */,
-				4F16A7662637AA13005CF7B9 /* DefineClassProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -131,6 +131,8 @@
 			dependencies = (
 			);
 			name = LocalizationGen;
+			packageProductDependencies = (
+			);
 			productName = LocalizationGen;
 			productReference = 781B7A952636E0D300AAB049 /* LocalizationGen */;
 			productType = "com.apple.product-type.tool";
@@ -158,6 +160,8 @@
 				Base,
 			);
 			mainGroup = 781B7A8C2636E0D300AAB049;
+			packageReferences = (
+			);
 			productRefGroup = 781B7A962636E0D300AAB049 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,11 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3B89359289A62A60037DA13 /* AndroidLocalizationManager.swift in Sources */,
 				781B7A992636E0D300AAB049 /* main.swift in Sources */,
 				4F16A7632637A703005CF7B9 /* LocalizationFileMakerProtocol.swift in Sources */,
 				4F16A75F2637A56B005CF7B9 /* AppleLocalizationManager.swift in Sources */,
 				4F16A75B26379CA2005CF7B9 /* CommandParser.swift in Sources */,
-				4F16A7672637AA13005CF7B9 /* DefineClassProtocol.swift in Sources */,
 				4F16A75726379A8F005CF7B9 /* CommonDefine.swift in Sources */,
 				4F16A75626379A8F005CF7B9 /* CommandDefine.swift in Sources */,
 				4F16A75526379A8F005CF7B9 /* CommandModel.swift in Sources */,

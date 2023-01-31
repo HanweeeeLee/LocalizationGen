@@ -1,13 +1,13 @@
 //
-//  AppleLocalizationManager.swift
+//  AndroidLocalizationManager.swift
 //  LocalizationGen
 //
-//  Created by hanwe lee on 2021/04/27.
+//  Created by Aaron Hanwe LEE on 2022/08/03.
 //
 
 import Cocoa
 
-class AppleLocalizationManager: LocalizationFileMakerProtocol {
+class AndroidLocalizationManager: LocalizationFileMakerProtocol {
     
     // MARK: property
     var model: CommandModel
@@ -16,6 +16,7 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
     var localColumnIndex: [String: Int] = [String: Int]()
     var cvsFileString: String = ""
     var cvsMatrix: [[String]] = []
+    let commaSymbol = "#!@#@!@#@!##$$@" // Temporary string for commas
     
     // MARK: life cycle
     init(model: CommandModel) {
@@ -52,11 +53,49 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
                 }
             }
             else {
-                let item: String = rowDivision[i]
-                let itemDivision: [String] = Array(item.components(separatedBy: ","))
+                let item: String = convertDivisionableString(rowDivision[i])
+                let itemDivision: [String] = recoverWriteableArray(Array(item.components(separatedBy: ",")))
                 returnValue.append(itemDivision)
             }
         }
+        return returnValue
+    }
+    
+    private func convertDivisionableString(_ inputed: String) -> String {
+        var returnValue = inputed
+        let inputedArr = Array(inputed)
+        var startIndex: Int = -1
+        var endIndex: Int = -1
+        for i in 0..<inputedArr.count {
+            let item = inputedArr[i]
+            if item == "\"" {
+                if startIndex == -1 {
+                    startIndex = i
+                } else {
+                    endIndex = i
+                }
+            }
+            if startIndex != -1 && endIndex != -1 {
+                let element: String = String(inputedArr[startIndex...endIndex])
+                var newElement: String = element
+                newElement = newElement.replacingOccurrences(of: "\"", with: "")
+                newElement = newElement.replacingOccurrences(of: ",", with: self.commaSymbol)
+                startIndex = -1
+                endIndex = -1
+                returnValue = returnValue.replacingOccurrences(of: element, with: newElement)
+            }
+        }
+        return returnValue
+    }
+    
+    private func recoverWriteableArray(_ inputed: [String]) -> [String] {
+        var returnValue = [String]()
+        
+        for item in inputed {
+            let newItem = item.replacingOccurrences(of: self.commaSymbol, with: ",")
+            returnValue.append(newItem)
+        }
+        
         return returnValue
     }
     
@@ -96,8 +135,11 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
     
     private func makeLocalizationLine(key: String, value: String) -> String {
         var returnValue: String = ""
-        returnValue.append("\"\(key)\" = \"\(value)\";\n")
-        
+        var resultValue = value
+        resultValue = resultValue.replacingOccurrences(of: "'", with: "\\'")
+        resultValue = resultValue.replacingOccurrences(of: "\"", with: "\\\"")
+        resultValue = resultValue.replacingOccurrences(of: "&", with: "&amp;")
+        returnValue.append("\t<string name=\"\(key)\">\(resultValue)</string>\n")
         return returnValue
     }
     
@@ -116,12 +158,12 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
         if fileName.contains(".") {
             let range: Range<String.Index> = fileName.range(of: ".")!
             let index: Int = fileName.distance(from: fileName.startIndex, to: range.lowerBound)
-            let removedRange = fileName.index(fileName.startIndex, offsetBy: index-1)..<fileName.endIndex
+            let removedRange = fileName.index(fileName.startIndex, offsetBy: index)..<fileName.endIndex
             fileName.removeSubrange(removedRange)
         }
-        fileName.append(CommonDefine.Apple.LOCALIZATION_FILE_EXTENSION)
-        fullPath = outputPath + "/\(localeKeyword)\(CommonDefine.Apple.LOCALIZATION_DIRECTORY_EXTENSION)/" + fileName
-        autoCreateLocaleDirectory(dir: outputPath + "/\(localeKeyword)\(CommonDefine.Apple.LOCALIZATION_DIRECTORY_EXTENSION)") // todo 옵션으로 빼기
+        fileName.append(".xml")
+        fullPath = outputPath + "/value-\(localeKeyword)/" + fileName
+        autoCreateLocaleDirectory(dir: outputPath + "/value-\(localeKeyword)") // todo 옵션으로 빼기
         return fullPath
     }
     
@@ -137,13 +179,18 @@ class AppleLocalizationManager: LocalizationFileMakerProtocol {
     
     func makeLocalizationFile() {
         for i in 0..<self.localColumnIndex.count {
-            var localizationFileString: String = ""
+            var localizationFileString: String = "<!--\(CommonDefine.SIGNATURE)-->\n"
+            localizationFileString.append("<resources>\n")
             for j in 0..<cvsMatrix.count {
                 let key: String = cvsMatrix[j][self.keyColumnIndex]
+                if key == "" {
+                    continue
+                }
                 guard let columnIndex = self.localColumnIndex[model.localColumnKeys[i]] else { return }
                 let value: String = cvsMatrix[j][columnIndex]
                 localizationFileString.append(makeLocalizationLine(key: key, value: value))
             }
+            localizationFileString.append("</resources>\n")
             makeFileFromString(localizationFileString, path: getOutputFullPath(localeKeyword: model.localColumnKeys[i]))
         }
     }
