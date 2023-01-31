@@ -12,7 +12,7 @@
 
 ### We plan to continue to support other platforms.
 
-## ## How to Use
+## How to Use
 ### Based on XCode
 - Please put the app in the right place and add the script to XCode.
 
@@ -20,7 +20,7 @@
 [App Path] inputPath=[csvFile Path] outputPath=[Path where Localization file will be written] fileName=[File Name] localColumnKeys=[Localization Key] keyColumnKey=[Column Key] written in csv
 ```
 
-#### #### ex)
+#### ex)
 ```
 ${SRCROOT}/LocalizationGen inputPath="/Users/master/Downloads/test.csv" outputPath=${TARGETNAME}/Localization fileName="myLocalization.string" localColumnKeys="ko&en" keyColumnKey="localize key"
 ```
@@ -29,15 +29,15 @@ ${SRCROOT}/LocalizationGen inputPath="/Users/master/Downloads/test.csv" outputPa
 The row 1 in the > .csv file is used to distinguish between localColumnKey, keyColumnKey, and so on.
 > It will be revised so that the row can be designated later.
 
-## ## param
+## param
 ## The app supports the following parameters:
-### ### required
+### required
 - inputPath : Path to the .csv file
 - outputPath : the path to the localization file that will result in execution
 - fileName : Name of the Localization file
 - localColumnKeys : keys of multiple languages to support, separated by & if multiple, ex) ko, en
 - keyColumnKey : Column to be the key for Localization
-### ### optional
+### optional
 - platform : Specifies the platform.
 #### Keywords by platform
 - iOS, macOS, watchOS, tvOS -> Apple
