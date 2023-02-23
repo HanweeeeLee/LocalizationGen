@@ -9,6 +9,7 @@
 - macOS
 - watchOS
 - tvOS
+- Android
 
 ### We plan to continue to support other platforms.
 
